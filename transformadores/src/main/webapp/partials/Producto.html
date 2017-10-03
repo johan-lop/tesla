@@ -43,7 +43,7 @@
      * Show selected elements in green
      */
     ul[dnd-list] li.selected {
-        background-color: red;
+        background-color:#ddd;
         color: #3c763d;
     }
 
@@ -109,20 +109,28 @@
             </div>
             <div class="row">
                 <div class="col-lg-6 col-md-6">
-                    <div class="panel panel-primary">
+                    <div class="panel panel-primary" >
                         <div class="panel-heading">SubProcesos Agregados</div>
                         <div class="panel-body">
                             <ul dnd-list="listaSubprocesos"
                                 dnd-effect-allowed="move"
-                                >
+                                dnd-inserted="logListEvent('inserted at', index, item, type)">
                                 <li ng-repeat="row in listaSubprocesos"
                                     dnd-draggable="row"
-                                    dnd-effect-allowed="move"
-                                    
+                                    dnd-effect-allowed="move"                                    
+                                    dnd-moved="listaSubprocesos.splice($index, 1)"
                                     dnd-selected="listaSubprocesos.selected = row"
-                                    ng-class="{'selected': listaSubprocesos.selected === row}"
-                                    >
-                                    {{row.descripcion}}
+                                    ng-class="{'selected': listaSubprocesos.selected === row}">
+                                    <div class="row">
+                                        <div class="col-lg-8 col-md-8">{{row.tipoSubproceso.descripcion}}</div>
+                                        <div class="col-lg-2 col-md-2"><input type="text" ng-model="row.horas" class="form-control"/></div>
+                                        <div class="col-lg-2 col-md-2">
+                                            <button type="button" class="btn btn-default" ng-click="borrar()">
+                                                <i class="glyphicon glyphicon-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
                                 </li>
                             </ul>
                         </div>
@@ -132,18 +140,24 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">Subprocesos</div>
                         <div class="panel-body">
-                            <ul dnd-list="listaSubprocesos2">
+                            <ul dnd-list="listaTiposSubprocesos"
+                                dnd-allowed-types="['item']"
+                                dnd-external-sources="true"   
+                                dnd-effect-allowed="move"                            
+                                >
                                 <!-- The dnd-draggable directive makes an element draggable and will
                                      transfer the object that was assigned to it. If an element was
                                      dragged away, you have to remove it from the original list
                                      yourself using the dnd-moved attribute -->
-                                <li ng-repeat="subProceso in listaSubprocesos2"
-                                    dnd-draggable="subProceso"                                    
-                                    dnd-effect-allowed="copy"
-                                    dnd-selected="listaSubprocesos2.selected = subProceso"
-                                    ng-class="{'selected': listaSubprocesos2.selected === subProceso}"
+                                <li ng-repeat="tipoProceso in listaTiposSubprocesos"
+                                    dnd-draggable="tipoProceso"                                    
+                                    dnd-effect-allowed="move"
+                                    dnd-type="'item'"
+                                    dnd-moved="listaTiposSubprocesos.splice($index, 1)"
+                                    dnd-selected="listaTiposSubprocesos.selected = tipoProceso"
+                                    ng-class="{'selected': listaTiposSubprocesos.selected === tipoProceso}"
                                     >
-                                    {{subProceso.descripcion}}
+                                    {{tipoProceso.descripcion}}
                                 </li>
                             </ul>
                         </div>

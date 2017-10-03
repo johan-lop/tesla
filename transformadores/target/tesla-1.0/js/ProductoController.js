@@ -26,6 +26,8 @@ module.controller('ProductoCtrl', ['$scope', '$filter', '$http', function ($scop
         $scope.lista = {};
         $scope.datosFormulario = {};
         $scope.panelEditar = false;
+        $scope.listaSubprocesos = [];
+
         $scope.listar = function () {
             $http.get('./webresources/Producto', {})
                     .success(function (data, status, headers, config) {
@@ -36,23 +38,31 @@ module.controller('ProductoCtrl', ['$scope', '$filter', '$http', function ($scop
         };
 
         $scope.listar();
-        
-         $scope.listarSubProceso = function () {
+
+        $scope.listarTiposproceso = function () {
             $http.get('./webresources/TipoSubproceso', {})
                     .success(function (data, status, headers, config) {
-                        $scope.listaSubprocesos = data;
+                        $scope.listaTiposSubprocesos = data;
                     }).error(function (data, status, headers, config) {
                 alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
             });
-            $http.get('./webresources/TipoSubproceso', {})
+        };
+        $scope.listarTiposproceso();
+
+        $scope.listaSubprecesos = function (idProceso) {
+            $http.get('./webresources/Subproceso/Producto/' + idProceso, {})
                     .success(function (data, status, headers, config) {
-                        $scope.listaSubprocesos2 = data;
+                        $scope.listaSubprocesos = data;
+//                        angular.forEach(data, function (subproceso) {
+//                            $scope.listaSubprocesos.push(subproceso);
+//                        });
+
+
                     }).error(function (data, status, headers, config) {
                 alert('Error al consultar la informaci\xf3n, por favor intente m\xe1s tarde');
             });
         };
 
-       $scope.listarSubProceso();
         //guardar
         $scope.nuevo = function () {
             $scope.panelEditar = true;
@@ -83,6 +93,7 @@ module.controller('ProductoCtrl', ['$scope', '$filter', '$http', function ($scop
         $scope.editar = function (data) {
             $scope.panelEditar = true;
             $scope.datosFormulario = data;
+            $scope.listaSubprecesos($scope.datosFormulario.id);
         };
         //eliminar
         $scope.eliminar = function (data) {
@@ -95,4 +106,13 @@ module.controller('ProductoCtrl', ['$scope', '$filter', '$http', function ($scop
                 });
             }
         };
+
+        $scope.logListEvent = function (action, index, external, type) {
+            if (type === 'item') {
+                var message = external ? 'External ' : '';
+                message += type + ' element was ' + action + ' position ' + index + JSON.stringify(external);
+                alert(message);
+            }
+        };
+
     }]);

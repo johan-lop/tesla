@@ -20,7 +20,10 @@ public class ApplicationConfig extends Application {
     }
     
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(ProductoServicio.class);resources.add(TipoSubprocesoServicio.class);resources.add(SubprocesoServicio.class);resources.add(ProduccionServicio.class);
+        resources.add(co.com.johan.tesla.servicio.ProduccionServicio.class);
+resources.add(co.com.johan.tesla.servicio.ProductoServicio.class);
+resources.add(co.com.johan.tesla.servicio.SubprocesoServicio.class);
+resources.add(co.com.johan.tesla.servicio.TipoSubprocesoServicio.class);
     }
     
 }
