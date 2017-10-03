@@ -52,7 +52,12 @@ module.controller('ProductoCtrl', ['$scope', '$filter', '$http', function ($scop
         $scope.listaSubprecesos = function (idProceso) {
             $http.get('./webresources/Subproceso/Producto/' + idProceso, {})
                     .success(function (data, status, headers, config) {
-                        $scope.listaSubprocesos = data;
+                        angular.forEach(data, function (value) {
+                            var subproceso = {};
+                            subproceso = value.tipoSubproceso;
+                            subproceso.horas = value.horas;
+                            $scope.listaSubprocesos.push(subproceso);
+                        });
 //                        angular.forEach(data, function (subproceso) {
 //                            $scope.listaSubprocesos.push(subproceso);
 //                        });
@@ -107,11 +112,21 @@ module.controller('ProductoCtrl', ['$scope', '$filter', '$http', function ($scop
             }
         };
 
-        $scope.logListEvent = function (action, index, external, type) {
+        $scope.calcularHoras = function() {
+            $scope.datosFormulario.horasFabricacion = 0;
+            angular.forEach($scope.listaSubprocesos, function(value) {
+                if (value.horas) {
+                    $scope.datosFormulario.horasFabricacion += parseFloat(value.horas);
+                }
+            });
+        };
+
+        $scope.logListEvent = function (action, index, data, type) {
             if (type === 'item') {
-                var message = external ? 'External ' : '';
-                message += type + ' element was ' + action + ' position ' + index + JSON.stringify(external);
-                alert(message);
+                var subproceso = {};
+                subproceso.tipoSubproceso = data;
+                data = subproceso;
+//                alert(message);
             }
         };
 

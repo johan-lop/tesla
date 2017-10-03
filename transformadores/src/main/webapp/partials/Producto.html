@@ -112,27 +112,37 @@
                     <div class="panel panel-primary" >
                         <div class="panel-heading">SubProcesos Agregados</div>
                         <div class="panel-body">
-                            <ul dnd-list="listaSubprocesos"
-                                dnd-effect-allowed="move"
-                                dnd-inserted="logListEvent('inserted at', index, item, type)">
-                                <li ng-repeat="row in listaSubprocesos"
-                                    dnd-draggable="row"
-                                    dnd-effect-allowed="move"                                    
-                                    dnd-moved="listaSubprocesos.splice($index, 1)"
-                                    dnd-selected="listaSubprocesos.selected = row"
-                                    ng-class="{'selected': listaSubprocesos.selected === row}">
-                                    <div class="row">
-                                        <div class="col-lg-8 col-md-8">{{row.tipoSubproceso.descripcion}}</div>
-                                        <div class="col-lg-2 col-md-2"><input type="text" ng-model="row.horas" class="form-control"/></div>
-                                        <div class="col-lg-2 col-md-2">
-                                            <button type="button" class="btn btn-default" ng-click="borrar()">
-                                                <i class="glyphicon glyphicon-trash"></i>
-                                            </button>
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 text-center"><b>Sub Proceso</b></div>
+                                <div class="col-lg-2 col-md-2 text-center"><b>Horas</b></div>
+                                <div class="col-lg-2 col-md-2 text-center"><b>Borrar</b></div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <ul dnd-list="listaSubprocesos"
+                                    dnd-effect-allowed="move"
+                                    dnd-inserted="logListEvent('inserted at', index, item, type)">
+                                    <li ng-repeat="row in listaSubprocesos"
+                                        dnd-draggable="row"
+                                        dnd-effect-allowed="move"                                    
+                                        dnd-moved="listaSubprocesos.splice($index, 1)"
+                                        dnd-selected="listaSubprocesos.selected = row"
+                                        ng-class="{'selected': listaSubprocesos.selected === row}">
+                                        <div class="row">
+                                            <div class="col-lg-8 col-md-8">::: {{row.descripcion}}</div>
+                                            <div class="col-lg-2 col-md-2">
+                                                <input type="text" ng-model="row.horas" class="form-control" ng-bind="calcularHoras()"/>
+                                            </div>
+                                            <div class="col-lg-2 col-md-2">
+                                                <button type="button" class="btn btn-default" ng-click="borrar()">
+                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                </li>
-                            </ul>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -157,7 +167,7 @@
                                     dnd-selected="listaTiposSubprocesos.selected = tipoProceso"
                                     ng-class="{'selected': listaTiposSubprocesos.selected === tipoProceso}"
                                     >
-                                    {{tipoProceso.descripcion}}
+                                    ::: {{tipoProceso.descripcion}}
                                 </li>
                             </ul>
                         </div>
