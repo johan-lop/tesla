@@ -35,6 +35,8 @@ public class TipoSubprocesoDTO {
     */
     private String descripcion;
     
+    private Double horas;
+    
     
     /**
     * @return
@@ -51,6 +53,15 @@ public class TipoSubprocesoDTO {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public Double getHoras() {
+        return horas;
+    }
+
+    public void setHoras(Double horas) {
+        this.horas = horas;
+    }
+    
     
 	
 }

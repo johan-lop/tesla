@@ -113,7 +113,8 @@
                         <div class="panel-heading">SubProcesos Agregados</div>
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-lg-8 col-md-8 text-center"><b>Sub Proceso</b></div>
+                                <div class="col-lg-1 col-md-1 text-center"><b>Orden</b></div>
+                                <div class="col-lg-7 col-md-7 text-center"><b>Sub Proceso</b></div>
                                 <div class="col-lg-2 col-md-2 text-center"><b>Horas</b></div>
                                 <div class="col-lg-2 col-md-2 text-center"><b>Borrar</b></div>
                             </div>
@@ -129,12 +130,13 @@
                                         dnd-selected="listaSubprocesos.selected = row"
                                         ng-class="{'selected': listaSubprocesos.selected === row}">
                                         <div class="row">
-                                            <div class="col-lg-8 col-md-8">::: {{row.descripcion}}</div>
+                                            <div class="col-lg-1 col-md-1">{{$index + 1}}</div>
+                                            <div class="col-lg-7 col-md-7">::: {{row.descripcion}}</div>
                                             <div class="col-lg-2 col-md-2">
                                                 <input type="text" ng-model="row.horas" class="form-control" ng-bind="calcularHoras()"/>
                                             </div>
                                             <div class="col-lg-2 col-md-2">
-                                                <button type="button" class="btn btn-default" ng-click="borrar()">
+                                                <button type="button" class="btn btn-default" ng-click="quitarSubproceso(row)">
                                                     <i class="glyphicon glyphicon-trash"></i>
                                                 </button>
                                             </div>

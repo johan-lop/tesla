@@ -1,8 +1,6 @@
 package co.com.johan.tesla.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import java.util.List;
-import java.util.ArrayList;
 
 /**
   * @generated
@@ -38,7 +36,7 @@ public class ProductoDTO {
     /**
     * @generated
     */
-    private Integer horasFabricacion;
+    private Double horasFabricacion;
     
     
     /**
@@ -60,7 +58,7 @@ public class ProductoDTO {
     * @return
     * @generated
     */
-    public Integer getHorasFabricacion() {
+    public Double getHorasFabricacion() {
         return this.horasFabricacion;
     }
     
@@ -68,7 +66,7 @@ public class ProductoDTO {
     * @param
     * @generated
     */
-    public void setHorasFabricacion(Integer horasFabricacion) {
+    public void setHorasFabricacion(Double horasFabricacion) {
         this.horasFabricacion = horasFabricacion;
     }
     

@@ -46,7 +46,7 @@ public class Producto {
     */
     
     //@Column(name = "horasFabricacion")
-    private Integer horasFabricacion;
+    private Double horasFabricacion;
     
     
     
@@ -63,20 +63,13 @@ public class Producto {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
-    /**
-    * @generated
-    */
-    public Integer getHorasFabricacion() {
-        return this.horasFabricacion;
+
+    public Double getHorasFabricacion() {
+        return horasFabricacion;
     }
-    
-    /**
-    * @generated
-    */
-    public void setHorasFabricacion(Integer horasFabricacion) {
+
+    public void setHorasFabricacion(Double horasFabricacion) {
         this.horasFabricacion = horasFabricacion;
     }
-    
-	
+   	
 }

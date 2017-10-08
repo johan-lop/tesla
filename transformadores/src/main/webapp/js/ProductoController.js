@@ -80,7 +80,10 @@ module.controller('ProductoCtrl', ['$scope', '$filter', '$http', function ($scop
 
             if (error)
                 return;
-            $http.post('./webresources/Producto', JSON.stringify($scope.datosFormulario), {}
+            $scope.datos = {};
+            $scope.datos.producto = $scope.datosFormulario;
+            $scope.datos.tiposSubproceso = $scope.listaSubprocesos;
+            $http.post('./webresources/Producto/ProductoSubproceso', JSON.stringify($scope.datos), {}
             ).success(function (data, status, headers, config) {
                 alert("Los datos han sido guardados con Exito");
                 $scope.panelEditar = false;
@@ -129,5 +132,9 @@ module.controller('ProductoCtrl', ['$scope', '$filter', '$http', function ($scop
 //                alert(message);
             }
         };
+        
+        $scope.quitarSubproceso = function(subproceso) {
+            $scope.listaSubprocesos.splice($scope.listaSubprocesos.indexOf(subproceso), 1);
+        }
 
     }]);

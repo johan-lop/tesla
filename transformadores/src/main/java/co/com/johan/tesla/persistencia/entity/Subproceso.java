@@ -12,7 +12,8 @@ import javax.persistence.*;
 @Table(name="Subproceso")//, schema="${schema}")
 @NamedQueries({
 	@NamedQuery(name="Subproceso.obtenerTodos", query="select e from Subproceso e"),
-	@NamedQuery(name="Subproceso.obtenerPorProducto", query="select e from Subproceso e where e.producto.id = :productoId")
+	@NamedQuery(name="Subproceso.obtenerPorProducto", query="select e from Subproceso e where e.producto.id = :productoId"),
+	@NamedQuery(name="Subproceso.borrarPorProducto", query="DELETE FROM Subproceso e where e.producto.id = :productoId")
 })
 public class Subproceso {
 

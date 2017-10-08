@@ -74,4 +74,10 @@ public class SubprocesoDAO {
         em.merge(entidad);
     }
 
+    public void borrarPorProceso(Long idProducto) {
+        em.createNamedQuery("Subproceso.borrarPorProducto")
+                .setParameter("productoId", idProducto)
+                .executeUpdate();
+    }
+    
 }
