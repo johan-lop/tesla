@@ -26,6 +26,24 @@ module.controller('ProduccionCtrl', ['$scope', '$filter', '$http', function ($sc
             });    
         };
         $scope.listarProducto();
+            $scope.listarCiudad=function(){
+            $http.get('./webresources/Ciudad', {})
+                .success(function (data, status, headers, config) {
+                    $scope.listaCiudad = data;
+                }).error(function (data, status, headers, config) {
+                    alert('Error al consultar la informaci\xf3n de ciudad, por favor intente m\xe1s tarde');
+            });    
+        };
+        $scope.listarCiudad();
+            $scope.listarCliente=function(){
+            $http.get('./webresources/Cliente', {})
+                .success(function (data, status, headers, config) {
+                    $scope.listaCliente = data;
+                }).error(function (data, status, headers, config) {
+                    alert('Error al consultar la informaci\xf3n de cliente, por favor intente m\xe1s tarde');
+            });    
+        };
+        $scope.listarCliente();
         
 
     $scope.listar();
