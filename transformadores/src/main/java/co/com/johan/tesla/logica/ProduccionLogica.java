@@ -90,7 +90,19 @@ public class ProduccionLogica {
 			if(dto.getFechaFin()!=null){
 				entidad.setFechaFin(LocalDate.parse(dto.getFechaFin(), formatoFecha));
 			}
+			entidad.setDisenio(dto.getDisenio());
+			entidad.setOp(dto.getOp());
+			entidad.setSerie(dto.getSerie());
+			entidad.setObservaciones(dto.getObservaciones());
 		
+			if(dto.getCiudad()!=null){
+				entidad.setCiudad(new Ciudad());
+				entidad.getCiudad().setId(dto.getCiudad().getId());
+			}
+			if(dto.getCliente()!=null){
+				entidad.setCliente(new Cliente());
+				entidad.getCliente().setId(dto.getCliente().getId());
+			}
 			if(dto.getProducto()!=null){
 				entidad.setProducto(new Producto());
 				entidad.getProducto().setId(dto.getProducto().getId());
@@ -130,11 +142,25 @@ public class ProduccionLogica {
 				if(entidad.getFechaFin()!=null){
 					dto.setFechaFin(formatoFecha.format(entidad.getFechaFin()));
 				}
+				dto.setDisenio(entidad.getDisenio());
+				dto.setOp(entidad.getOp());
+				dto.setSerie(entidad.getSerie());
+				dto.setObservaciones(entidad.getObservaciones());
 		
 			if(entidad.getProducto()!=null){
 				dto.setProducto(
 					new ProductoDTO(
 						entidad.getProducto().getId()));
+			}
+			if(entidad.getCiudad()!=null){
+				dto.setCiudad(
+					new CiudadDTO(
+						entidad.getCiudad().getId()));
+			}
+			if(entidad.getCliente()!=null){
+				dto.setCliente(
+					new ClienteDTO(
+						entidad.getCliente().getId()));
 			}
 		
 		return dto;

@@ -1,35 +1,51 @@
 <div class="btn-group">
-	<button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Produccion</button>
-	<button type="button" class="btn btn-default" ng-click="cancelar()">Listar Produccion</button>
+    <button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Produccion</button>
+    <button type="button" class="btn btn-default" ng-click="cancelar()">Listar Produccion</button>
 </div>
-				
+
 <div class="panel panel-primary" ng-hide="panelEditar">
     <div class="panel-heading">Parametrizaci&oacute;n de Produccion</div>
     <div class="panel-body">
         <table class="resultados table table-striped">
             <tr>
-                				<th>
-                                    fechaInicio
-                                </th>				<th>
-                                    fechaFin
-                                </th>
-								<th>
-				                    producto
-				                </th>
-				<th>
+                <th>
+                    fechaInicio
+                </th>				<th>
+                    fechaFin
+                </th>				<th>
+                    disenio
+                </th>				<th>
+                    op
+                </th>				<th>
+                    serie
+                </th>				<th>
+                    observaciones
+                </th>
+                <th>
+                    cliente
+                </th>				<th>
+                    producto
+                </th>				<th>
+                    ciudad
+                </th>
+                <th>
                     &nbsp;
                 </th>
             </tr>
             <tr ng-repeat="row in lista">
-                		<td class="row">{{row.fechaInicio}}</td>
-                		<td class="row">{{row.fechaFin}}</td>
-                
-					<td class="row">{{row.producto.nombre}}</td>              
-				<td class="row">
+                <td class="row">{{row.fechaInicio}}</td>
+                <td class="row">{{row.fechaFin}}</td>
+                <td class="row">{{row.disenio}}</td>
+                <td class="row">{{row.op}}</td>
+                <td class="row">{{row.serie}}</td>
+                <td class="row">{{row.observaciones}}</td>
+
+                <td class="row">{{row.cliente.nombre}}</td>              	<td class="row">{{row.producto.nombre}}</td>              	<td class="row">{{row.ciudad.nombre}}</td>              
+                <td class="row">
                     <button type="button" class="btn btn-default" ng-click="editar(row)">
                         <span class="glyphicon glyphicon-pencil"></span>Editar
                     </button>
-					<button type="button" class="btn btn-default" ng-click="eliminar(row)">
+                    <button type="button" class="btn btn-default" ng-click="eliminar(row)">
                         <span class="glyphicon glyphicon-remove"></span>Eliminar
                     </button>
                 </td>
@@ -43,39 +59,96 @@
     <div class="panel-heading">Parametrizaci&oacute;n de Produccion</div>
     <div class="panel-body">
         <form role="form" id="formularioEditar">
-            				<div class="row">
-                                <div class="form-group col-md-6" ng-class="errores.fechaInicio?'error':''">
-                                    <label for="fechaInicio">fechaInicio</label>
-                                    <input id="fechaInicio" 
-                                           class="form-control" 
-            							   type="text"
-                                           ng-model="datosFormulario.fechaInicio"
-            							   placeholder="fechaInicio"/>
-                                    <div ng-show="errores.fechaInicio">{{errores.fechaInicio}}</div>
-                                </div>
-                            </div>				<div class="row">
-                                <div class="form-group col-md-6" ng-class="errores.fechaFin?'error':''">
-                                    <label for="fechaFin">fechaFin</label>
-                                    <input id="fechaFin" 
-                                           class="form-control" 
-            							   type="text"
-                                           ng-model="datosFormulario.fechaFin"
-            							   placeholder="fechaFin"/>
-                                    <div ng-show="errores.fechaFin">{{errores.fechaFin}}</div>
-                                </div>
-                            </div> 
-							<div class="row">
-			                    <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
-			                        <label>producto</label>
-									<select id="producto" class="form-control" 
-			                            ng-model="datosFormulario.producto"
-			                            ng-options="option.nombre for option in listaProducto track by option.id">
-			                    	</select>
-			                        <div ng-show="errores.producto">{{errores.producto}}</div>
-			                    </div>
-			                </div>
-			<div class="btn-group">
-				<button type="button" class="btn btn-default" ng-click="guardar()" ng-show="nuevoRegistro">Guardar</button>
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label>producto</label>
+                    <select id="producto" class="form-control" 
+                            ng-model="datosFormulario.producto"
+                            ng-options="option.descripcion for option in listaProducto track by option.id">
+                    </select>
+                    <div ng-show="errores.producto">{{errores.producto}}</div>
+                </div>
+                <div class="form-group col-md-6" ng-class="errores.disenio ? 'error' : ''">
+                    <label for="disenio">Diseño</label>
+                    <input id="disenio" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.disenio"
+                           placeholder="Diseño"/>
+                    <div ng-show="errores.disenio">{{errores.disenio}}</div>
+                </div>                
+            </div>    
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.op ? 'error' : ''">
+                    <label for="op">op</label>
+                    <input id="op" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.op"
+                           placeholder="op"/>
+                    <div ng-show="errores.op">{{errores.op}}</div>
+                </div>
+                <div class="form-group col-md-6" ng-class="errores.serie ? 'error' : ''">
+                    <label for="serie">serie</label>
+                    <input id="serie" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.serie"
+                           placeholder="serie"/>
+                    <div ng-show="errores.serie">{{errores.serie}}</div>
+                </div>
+            </div>    
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label>cliente</label>
+                    <select id="cliente" class="form-control" 
+                            ng-model="datosFormulario.cliente"
+                            ng-options="option.nombre for option in listaCliente track by option.id">
+                    </select>
+                    <div ng-show="errores.cliente">{{errores.cliente}}</div>
+                </div>
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label>ciudad</label>
+                    <select id="ciudad" class="form-control" 
+                            ng-model="datosFormulario.ciudad"
+                            ng-options="option.nombre for option in listaCiudad track by option.id">
+                    </select>
+                    <div ng-show="errores.ciudad">{{errores.ciudad}}</div>
+                </div>
+            </div>    
+            <div class="row">
+                <div class="form-group col-md-12" ng-class="errores.observaciones ? 'error' : ''">
+                    <label for="observaciones">observaciones</label>
+                    <textarea id="observaciones" 
+                           class="form-control" 
+                           ng-model="datosFormulario.observaciones"
+                           placeholder="observaciones"/>
+                    <div ng-show="errores.observaciones">{{errores.observaciones}}</div>
+                </div>
+            </div>    
+            <div class="row">
+
+                <div class="form-group col-md-6" ng-class="errores.fechaInicio ? 'error' : ''">
+                    <label for="fechaInicio">fechaInicio</label>
+                    <input id="fechaInicio" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.fechaInicio"
+                           placeholder="fechaInicio"/>
+                    <div ng-show="errores.fechaInicio">{{errores.fechaInicio}}</div>
+                </div>
+                <div class="form-group col-md-6" ng-class="errores.fechaFin ? 'error' : ''">
+                    <label for="fechaFin">fechaFin</label>
+                    <input id="fechaFin" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.fechaFin"
+                           placeholder="fechaFin"/>
+                    <div ng-show="errores.fechaFin">{{errores.fechaFin}}</div>
+                </div>
+            </div>				
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-click="guardar()" ng-show="nuevoRegistro">Guardar</button>
                 <button type="button" class="btn btn-default" ng-click="guardar()" ng-show="!nuevoRegistro">Aceptar</button>
                 <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
             </div>

@@ -40,6 +40,36 @@ public class ProduccionDTO {
     */
     private String fechaFin;
     
+    /**
+    * @generated
+    */
+    private String disenio;
+    
+    /**
+    * @generated
+    */
+    private String op;
+    
+    /**
+    * @generated
+    */
+    private String serie;
+    
+    /**
+    * @generated
+    */
+    private String observaciones;
+    
+    
+    /**
+    * @generated
+    */
+    private ClienteDTO cliente;
+    
+    /**
+    * @generated
+    */
+    private CiudadDTO ciudad;
     
     /**
     * @generated
@@ -76,7 +106,82 @@ public class ProduccionDTO {
     public void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
     }
+    /**
+    * @return
+    * @generated
+    */
+    public String getDisenio() {
+        return this.disenio;
+    }
     
+    /**
+    * @param
+    * @generated
+    */
+    public void setDisenio(String disenio) {
+        this.disenio = disenio;
+    }
+    /**
+    * @return
+    * @generated
+    */
+    public String getOp() {
+        return this.op;
+    }
+    
+    /**
+    * @param
+    * @generated
+    */
+    public void setOp(String op) {
+        this.op = op;
+    }
+    /**
+    * @return
+    * @generated
+    */
+    public String getSerie() {
+        return this.serie;
+    }
+    
+    /**
+    * @param
+    * @generated
+    */
+    public void setSerie(String serie) {
+        this.serie = serie;
+    }
+    /**
+    * @return
+    * @generated
+    */
+    public String getObservaciones() {
+        return this.observaciones;
+    }
+    
+    /**
+    * @param
+    * @generated
+    */
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+    
+	/**
+	* @return
+	* @generated
+	*/
+	public CiudadDTO getCiudad() {
+	    return this.ciudad;
+	}
+	
+	/**
+	* @param
+	* @generated
+	*/
+	public void setCiudad(CiudadDTO ciudad) {
+	    this.ciudad = ciudad;
+	}
 	/**
 	* @return
 	* @generated
@@ -91,6 +196,21 @@ public class ProduccionDTO {
 	*/
 	public void setProducto(ProductoDTO producto) {
 	    this.producto = producto;
+	}
+	/**
+	* @return
+	* @generated
+	*/
+	public ClienteDTO getCliente() {
+	    return this.cliente;
+	}
+	
+	/**
+	* @param
+	* @generated
+	*/
+	public void setCliente(ClienteDTO cliente) {
+	    this.cliente = cliente;
 	}
 	
 }
