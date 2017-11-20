@@ -49,12 +49,12 @@
 
 </style>
 <div class="btn-group">
-    <button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Producto</button>
-    <button type="button" class="btn btn-default" ng-click="cancelar()">Listar Producto</button>
+    <button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Transformador</button>
+    <button type="button" class="btn btn-default" ng-click="cancelar()">Listar Transformador</button>
 </div>
 
 <div class="panel panel-primary" ng-hide="panelEditar">
-    <div class="panel-heading">Parametrizaci&oacute;n de Producto</div>
+    <div class="panel-heading">Parametrizaci&oacute;n de Tranformador</div>
     <div class="panel-body">
         <table class="resultados table table-striped">
             <tr>
@@ -84,7 +84,7 @@
 </div>
 
 <div class="panel panel-primary" ng-show="panelEditar">
-    <div class="panel-heading">Parametrizaci&oacute;n de Producto</div>
+    <div class="panel-heading">Parametrizaci&oacute;n de Transformador</div>
     <div class="panel-body">
         <form role="form" id="formularioEditar">
             <div class="row">
@@ -103,7 +103,8 @@
                            class="form-control" 
                            type="text"
                            ng-model="datosFormulario.horasFabricacion"
-                           placeholder="horasFabricacion"/>
+                           placeholder="horasFabricacion"
+                           ng-disabled="true"/>
                     <div ng-show="errores.horasFabricacion">{{errores.horasFabricacion}}</div>
                 </div>
             </div>

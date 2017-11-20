@@ -1,30 +1,32 @@
 <div class="btn-group">
-	<button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo TipoSubproceso</button>
-	<button type="button" class="btn btn-default" ng-click="cancelar()">Listar TipoSubproceso</button>
+    <button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Subproceso</button>
+    <button type="button" class="btn btn-default" ng-click="cancelar()">Listar Subproceso</button>
 </div>
-				
+
 <div class="panel panel-primary" ng-hide="panelEditar">
-    <div class="panel-heading">Parametrizaci&oacute;n de TipoSubproceso</div>
+    <div class="panel-heading">Parametrizaci&oacute;n de Subproceso</div>
     <div class="panel-body">
         <table class="resultados table table-striped">
             <tr>
-                				<th>
-                                    descripcion
-                                </th>
-				
-				<th>
+                <th>
+                    Descripción
+                </th>
+                <th>Area</th>
+
+                <th>
                     &nbsp;
                 </th>
             </tr>
             <tr ng-repeat="row in lista">
-                		<td class="row">{{row.descripcion}}</td>
-                
-				
-				<td class="row">
+                <td class="row">{{row.descripcion}}</td>
+                <td class="row">{{row.area.nombre}}</td>
+
+
+                <td class="row">
                     <button type="button" class="btn btn-default" ng-click="editar(row)">
                         <span class="glyphicon glyphicon-pencil"></span>Editar
                     </button>
-					<button type="button" class="btn btn-default" ng-click="eliminar(row)">
+                    <button type="button" class="btn btn-default" ng-click="eliminar(row)">
                         <span class="glyphicon glyphicon-remove"></span>Eliminar
                     </button>
                 </td>
@@ -35,23 +37,32 @@
 </div>
 
 <div class="panel panel-primary" ng-show="panelEditar">
-    <div class="panel-heading">Parametrizaci&oacute;n de TipoSubproceso</div>
+    <div class="panel-heading">Parametrizaci&oacute;n de Subproceso</div>
     <div class="panel-body">
         <form role="form" id="formularioEditar">
-            				<div class="row">
-                                <div class="form-group col-md-6" ng-class="errores.descripcion?'error':''">
-                                    <label for="descripcion">descripcion</label>
-                                    <input id="descripcion" 
-                                           class="form-control" 
-            							   type="text"
-                                           ng-model="datosFormulario.descripcion"
-            							   placeholder="descripcion"/>
-                                    <div ng-show="errores.descripcion">{{errores.descripcion}}</div>
-                                </div>
-                            </div> 
-			
-			<div class="btn-group">
-				<button type="button" class="btn btn-default" ng-click="guardar()" ng-show="nuevoRegistro">Guardar</button>
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.descripcion ? 'error' : ''">
+                    <label for="descripcion">descripcion</label>
+                    <input id="descripcion" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.descripcion"
+                           placeholder="descripcion"/>
+                    <div ng-show="errores.descripcion">{{errores.descripcion}}</div>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label>area</label>
+                    <select id="area" class="form-control" 
+                            ng-model="datosFormulario.area"
+                            ng-options="option.nombre for option in listaArea track by option.id">
+                    </select>
+                    <div ng-show="errores.area">{{errores.area}}</div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-click="guardar()" ng-show="nuevoRegistro">Guardar</button>
                 <button type="button" class="btn btn-default" ng-click="guardar()" ng-show="!nuevoRegistro">Aceptar</button>
                 <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
             </div>

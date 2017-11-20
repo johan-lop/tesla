@@ -24,3 +24,7 @@
     display:block;
     border:0px;
 }
+
+.panel-primary>.panel-heading {
+    background-color:  rgba(226, 28, 33, 1);
+}
